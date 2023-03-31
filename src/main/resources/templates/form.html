@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>NBA Players</title>
+</head>
+<body>
+<div align="center">
+    <h1> NBA Players </h1>
+    <form action="#" th:action="@{/playerForm}" method="post" th:object="${playerData}">
+        <label>First Name:</label>
+        <input type="text" th:field="*{firstName}"/><br/>
+
+        <label>Last Name:</label>
+        <input type="text" th:field="*{lastName}"/><br/>
+
+        <label>Season1 (yyyy):</label>
+        <input type="number" th:field="*{season1}"/><br/>
+
+        <label>Season2 (yyyy):</label>
+        <input type="number" th:field="*{season2}"/><br/>
+
+        <button type="submit">Search</button>
+
+        <div th:if="${#fields.hasAnyErrors()}">
+            <ul>
+                <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+            </ul>
+        </div>
+
+    </form>
+
+</div>
+</body>
+</html>
